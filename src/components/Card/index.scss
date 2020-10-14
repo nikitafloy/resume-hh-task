@@ -11,7 +11,7 @@ $disable: #b3b3b3;
 
 @mixin card-style($style) {
 	&_#{$style} {
-		background-image: url('../../assets/images/cards.png');
+		background-image: url('../../assets/images/cards.webp');
 		background-position-x: if(
 			$style == 'blue',
 			0px,
