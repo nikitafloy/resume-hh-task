@@ -60,7 +60,7 @@ const Card = ({
 				<div className="Card__self__content">{content}</div>
 			</div>
 
-			<div className="Card__weight">
+			<div className="Card__weight" onClick={() => onClickHandler(id)}>
 				<div className={`Card__weight Card__weight_${color}`}>{weight}</div>
 			</div>
 
