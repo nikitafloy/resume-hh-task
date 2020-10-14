@@ -10,10 +10,26 @@ $dark-pink: #d91667;
 $disable: #b3b3b3;
 
 @mixin card-style($style) {
-	$img-url: '../../assets/images/cards/' + $style + '.png';
-
 	&_#{$style} {
-		background-image: url($img-url);
+		background-image: url('../../assets/images/cards.png');
+		background-position-x: if(
+			$style == 'blue',
+			0px,
+			if(
+				$style == 'pink',
+				0px,
+				if($style == 'dark-pink', -320px, if($style == 'disable', 320px, 640px))
+			)
+		);
+		background-position-y: if(
+			$style == 'blue',
+			480px,
+			if(
+				$style == 'pink',
+				0px,
+				if($style == 'dark-pink', 0px, if($style == 'disable', 0px, 480px))
+			)
+		);
 		height: 440px;
 	}
 }
