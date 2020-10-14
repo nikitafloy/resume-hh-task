@@ -1,0 +1,154 @@
+$white: #fff;
+$gray: #666;
+
+$blue: #2ea8e6;
+$dark-blue: #1698d9;
+
+$pink: #e52e7a;
+$dark-pink: #d91667;
+
+$disable: #b3b3b3;
+
+@mixin card-style($style) {
+	$img-url: '../../assets/images/cards/' + $style + '.png';
+
+	&_#{$style} {
+		background-image: url($img-url);
+		height: 440px;
+	}
+}
+
+@mixin card-style-weight($style) {
+	&_#{$style} {
+		position: absolute;
+		bottom: 15px;
+		right: 15px;
+		width: 80px;
+		height: 80px;
+		color: $white;
+		border-radius: 50%;
+		text-align: center;
+		background-color: #{if(
+				$style == 'dark-blue',
+				$dark-blue,
+				if(
+					$style == 'dark-pink',
+					$dark-pink,
+					if($style == 'pink', $pink, if($style == 'blue', $blue, $disable))
+				)
+			)};
+	}
+}
+
+.Card {
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
+	width: 320px;
+
+	&:nth-child(3) {
+		margin: 0 80px;
+
+		@media (max-width: 1024px) {
+			margin: 0;
+		}
+	}
+
+	&:nth-child(2) {
+		@media (max-width: 1024px) {
+			margin-right: 80px;
+		}
+		@media (max-width: 768px) {
+			margin-right: 60px;
+		}
+		@media (max-width: 720px) {
+			margin-right: 30px;
+		}
+		@media (max-width: 720px) {
+			margin-right: auto;
+		}
+		@media (max-width: 660px) {
+			margin: auto;
+		}
+	}
+
+	&__self {
+		cursor: pointer;
+		padding: 20px 50px;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 10px;
+
+		&__signature {
+			color: $gray;
+
+			&_pink {
+				color: $pink;
+			}
+		}
+
+		h1 {
+			font-size: 48px;
+		}
+
+		h2 {
+			font-size: 24px;
+		}
+
+		&__content {
+			font-size: 14px;
+			color: $gray;
+			padding: 15px 0;
+
+			p {
+				margin: 0;
+			}
+		}
+
+		@include card-style('blue');
+		@include card-style('dark-blue');
+		@include card-style('pink');
+		@include card-style('dark-pink');
+		@include card-style('disable');
+
+		&_disable > * {
+			opacity: 0.2;
+		}
+	}
+
+	&__weight {
+		position: relative;
+
+		p {
+			margin: 0;
+
+			&:first-child {
+				font-size: 42px;
+				padding-top: 5px;
+			}
+
+			&:nth-child(2) {
+				margin-top: -5px;
+				font-size: 21px;
+			}
+		}
+
+		@include card-style-weight('blue');
+		@include card-style-weight('dark-blue');
+		@include card-style-weight('pink');
+		@include card-style-weight('dark-pink');
+		@include card-style-weight('disable');
+	}
+
+	&__signature {
+		color: $white;
+		text-align: center;
+		font-size: 13px;
+		padding: 15px 0;
+
+		a {
+			color: $dark-blue;
+
+			&:hover {
+				color: $blue;
+			}
+		}
+	}
+}
