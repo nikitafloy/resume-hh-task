@@ -11,16 +11,12 @@ const Card = ({
 	weight,
 	onClickHandler,
 }) => {
+	const prevState = localStorage.getItem('prevState');
+	const candidate =
+		JSON.parse(prevState).findIndex((item) => console.log(item, id)) === -1;
+
 	const [hover, setHover] = useState(false);
-
-	let changed = false;
-	const prevCart = localStorage.getItem('prevState');
-
-	if (prevCart) {
-		changed =
-			JSON.parse(prevCart).findIndex((item) => console.log(item, id)) === -1 &&
-			choose;
-	}
+	const changed = prevState ? candidate && choose : false;
 
 	let color = avialible ? (choose ? 'dark-pink' : 'dark-blue') : 'disable';
 
@@ -36,7 +32,8 @@ const Card = ({
 			: color;
 	}
 
-	const pinkSignature = color === 'pink';
+	const pinkSignature = color === 'pink' ? 'Card__self__signature_pink' : '';
+
 	const mouseEvent = (toggle) => {
 		if (avialible) setHover(toggle);
 		if (changed && !toggle) localStorage.removeItem('prevState');
@@ -52,16 +49,8 @@ const Card = ({
 				className={`Card__self Card__self_${color}`}
 				onClick={() => onClickHandler(id)}
 			>
-				<div
-					className={`Card__self__signature ${
-						pinkSignature ? 'Card__self__signature_pink' : ''
-					}`}
-				>
-					{pinkSignature ? (
-						<>Котэ не одобряет?</>
-					) : (
-						<>Сказочное заморское яство</>
-					)}
+				<div className={`Card__self__signature ${pinkSignature}`}>
+					{pinkSignature ? 'Котэ не одобряет?' : 'Сказочное заморское яство'}
 				</div>
 
 				<h1>Нямушка</h1>
