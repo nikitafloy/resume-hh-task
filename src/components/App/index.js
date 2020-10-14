@@ -1,72 +1,11 @@
 import React, { useState } from 'react';
 import './index.scss';
 
+// Components
 import { Card } from '../';
 
-const food = [
-	{
-		filling: 'с фуа-гра',
-		content: (
-			<>
-				<p>
-					<b>10</b> порций
-				</p>
-				<p>мышь в подарок</p>
-			</>
-		),
-		weight: (
-			<>
-				<p>0,5</p>
-				<p>кг</p>
-			</>
-		),
-		signature: 'Печень утки разварная с артишоками.',
-		avialible: true,
-	},
-	{
-		filling: 'с рыбой',
-		content: (
-			<>
-				<p>
-					<b>40</b> порций
-				</p>
-				<p>
-					<b>2</b> мыши в подарок
-				</p>
-			</>
-		),
-		weight: (
-			<>
-				<p>2</p>
-				<p>кг</p>
-			</>
-		),
-		signature: 'Головы щучьи с чесноком да свежайшая сёмгушка.',
-		avialible: true,
-	},
-	{
-		filling: 'с курой',
-		content: (
-			<>
-				<p>
-					<b>100</b> порций
-				</p>
-				<p>
-					<b>5</b> мышей в подарок
-				</p>
-				<p>заказчик доволен</p>
-			</>
-		),
-		weight: (
-			<>
-				<p>5</p>
-				<p>кг</p>
-			</>
-		),
-		signature: 'Филе из цыплят с трюфелями в бульоне.',
-		avialible: false,
-	},
-];
+// Cards data
+import cards from '../../cards';
 
 const App = () => {
 	const [state, setState] = useState({ cart: [] });
@@ -80,7 +19,7 @@ const App = () => {
 	};
 
 	const renderCards = () =>
-		food.map(({ avialible, filling, content, weight, signature }, key) => (
+		cards.map(({ avialible, filling, content, weight, signature }, key) => (
 			<Card
 				id={key}
 				key={key}
@@ -98,7 +37,7 @@ const App = () => {
 		<div className="App">
 			<div className="App__body">
 				<div className="App__body__title">Ты сегодня покормил кота?</div>
-				{renderCards()}
+				<div className="App__body__cards">{renderCards()}</div>
 			</div>
 		</div>
 	);
