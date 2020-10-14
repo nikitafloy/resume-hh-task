@@ -64,7 +64,11 @@ const Card = ({
 				<div className={`Card__weight Card__weight_${color}`}>{weight}</div>
 			</div>
 
-			<div className="Card__signature">
+			<div
+				className={`Card__signature ${
+					!avialible ? 'Card__signature_yellow' : ''
+				}`}
+			>
 				{avialible ? (
 					choose ? (
 						signature
@@ -78,9 +82,7 @@ const Card = ({
 						</>
 					)
 				) : (
-					<span style={{ color: '#FFFF66' }}>
-						Печалька, {filling} закончился.
-					</span>
+					<span>Печалька, {filling} закончился.</span>
 				)}
 			</div>
 		</div>

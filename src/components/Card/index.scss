@@ -1,6 +1,8 @@
 $white: #fff;
 $gray: #666;
 
+$yellow: #ffff66;
+
 $blue: #2ea8e6;
 $dark-blue: #1698d9;
 
@@ -159,6 +161,10 @@ $disable: #b3b3b3;
 		text-align: center;
 		font-size: 13px;
 		padding: 15px 0;
+
+		&_yellow {
+			color: $yellow;
+		}
 
 		a {
 			color: $dark-blue;
