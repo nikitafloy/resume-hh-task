@@ -12,8 +12,9 @@ const Card = ({
 	onClickHandler,
 }) => {
 	const prevState = localStorage.getItem('prevState');
-	const candidate =
-		JSON.parse(prevState).findIndex((item) => console.log(item, id)) === -1;
+	const candidate = prevState
+		? JSON.parse(prevState).findIndex((item) => console.log(item, id)) === -1
+		: null;
 
 	const [hover, setHover] = useState(false);
 	const changed = prevState ? candidate && choose : false;
